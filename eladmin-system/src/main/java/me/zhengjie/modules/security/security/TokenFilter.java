@@ -65,6 +65,10 @@ public class TokenFilter extends GenericFilterBean {
             tokenProvider.checkRenewal(token);
          }
       }
+      // 过滤器链
+      // FilterChain是tomcat责任链设计模式
+      // doFilter过滤器方法，把自身接收到的请求request对象和request对象和自身对象及filterchain作为下一个过滤器的三个参数
+      //
       filterChain.doFilter(servletRequest, servletResponse);
    }
 
