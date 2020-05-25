@@ -4,6 +4,7 @@ package me.xyz.controller;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
+import me.xyz.dto.QueryCriteria;
 import me.zhengjie.annotation.Log;
 import me.zhengjie.utils.PageUtil;
 import org.springframework.data.domain.Pageable;
@@ -38,8 +39,9 @@ public class AFirstController {
     @ApiOperation("链路测试")
     @GetMapping // 默认的query没有进一步路径
     @PreAuthorize("@el.check('user:list')")
-    public ResponseEntity<Object> query(){
+    public ResponseEntity<Object> query(QueryCriteria queryCriteria){
 
+        System.out.println(queryCriteria.getId());
         // 先使用不带参数的请求
         String result = "来自后台";
         return new ResponseEntity<>(result, HttpStatus.OK);
