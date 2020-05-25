@@ -36,10 +36,11 @@ public class AFirstController {
 
     @Log("链路测试")
     @ApiOperation("链路测试")
-    @GetMapping("/test")
+    @GetMapping // 默认的query没有进一步路径
     @PreAuthorize("@el.check('user:list')")
     public ResponseEntity<Object> query(){
 
+        // 先使用不带参数的请求
         String result = "来自后台";
         return new ResponseEntity<>(result, HttpStatus.OK);
     }

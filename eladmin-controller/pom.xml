@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>eladmin-controller</artifactId>
+    <artifactId>eladmin-xyz-controller</artifactId>
     <name>自己的前端接口模块</name>
 
     <dependencies>
