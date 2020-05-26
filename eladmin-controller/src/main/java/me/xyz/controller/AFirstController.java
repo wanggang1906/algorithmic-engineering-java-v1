@@ -12,6 +12,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,14 +22,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Api(tags = "自定义：链路测试")
 @RestController
-@RequestMapping("/api/self")
+@RequestMapping("/api/")
 @RequiredArgsConstructor
 public class AFirstController {
 
     /**
      * restController和controller
      * */
-
 
     /**
      * 注解说明
@@ -37,11 +37,11 @@ public class AFirstController {
 
     @Log("链路测试")
     @ApiOperation("链路测试")
-    @GetMapping // 默认的query没有进一步路径
+    @GetMapping("self") // 默认的方法
     @PreAuthorize("@el.check('user:list')")
-    public ResponseEntity<Object> query(QueryCriteria queryCriteria){
+    public ResponseEntity<Object> query(String id){
 
-        System.out.println(queryCriteria.getId());
+        System.out.println(id);
         // 先使用不带参数的请求
         String result = "来自后台";
         return new ResponseEntity<>(result, HttpStatus.OK);
