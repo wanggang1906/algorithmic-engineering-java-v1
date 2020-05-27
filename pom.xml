@@ -16,6 +16,9 @@
         <module>eladmin-tools</module>
         <module>eladmin-generator</module>
         <module>eladmin-controller</module>
+        <module>eladmin-xyz-test</module>
+        <module>el-sys-chil</module>
+        <module>test-con</module>
     </modules>
 
     <name>EL-ADMIN后台管理系统</name>

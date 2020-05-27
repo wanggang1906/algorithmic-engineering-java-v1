@@ -9,8 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>eladmin-xyz-controller</artifactId>
-    <name>自己的前端接口模块</name>
+    <artifactId>eladmin-xyz-test</artifactId>
+    <name>测试模块</name>
 
     <dependencies>
         <!-- tools 模块包含了 common 和 logging 模块 -->
@@ -25,7 +25,6 @@
             <version>2.4</version>
             <scope>compile</scope>
         </dependency>
-
     </dependencies>
 
 

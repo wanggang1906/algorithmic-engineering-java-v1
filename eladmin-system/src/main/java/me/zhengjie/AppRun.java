@@ -23,6 +23,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.server.ServletWebServerFactory;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -40,6 +41,10 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @EnableTransactionManagement
 @EnableJpaAuditing(auditorAwareRef = "auditorAware")
+@ComponentScan(basePackages = {"me.zhengjie","me.zhengjie.xyz","me.xyz.controller","me.xyz.controller","xyz.me.controller"})
+// E:\GitHubProject\wgGitHub\algorithmic-engineering-java-v1\eladmin-system\src\main\java\me\zhengjie\AppRun.java
+// me.zhengjie.config.ConfigurerAdapter
+// xyz.me.controller.BFirstController
 public class AppRun {
 
     public static void main(String[] args) {
