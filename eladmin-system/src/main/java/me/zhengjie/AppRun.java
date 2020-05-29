@@ -41,7 +41,7 @@ import org.springframework.web.bind.annotation.RestController;
 @SpringBootApplication
 @EnableTransactionManagement
 @EnableJpaAuditing(auditorAwareRef = "auditorAware")
-@ComponentScan(basePackages = {"me.zhengjie","me.zhengjie.xyz","me.xyz.controller","me.xyz.controller","xyz.me.controller"})
+//@ComponentScan(basePackages = {"me.zhengjie","me.zhengjie.xyz","me.zhengjie.controller","me.xyz.controller","xyz.me.controller"})
 // E:\GitHubProject\wgGitHub\algorithmic-engineering-java-v1\eladmin-system\src\main\java\me\zhengjie\AppRun.java
 // me.zhengjie.config.ConfigurerAdapter
 // xyz.me.controller.BFirstController
