@@ -35,7 +35,8 @@ public class JavaExeclPythonTest {
             Properties prop = new Properties();
             //读取属性文件prop.properties。Read the property file prop.properties)
             // @1 - 以文件的形式读取
-            File file = new File("E:\\GitHubProjects\\algorithmic-engineering-java-v1\\test-con\\src\\main\\resources\\config\\propTest.properties");
+            String propFileAbsolutePath = "E:\\GitHubProjects\\algorithmic-engineering-java-v1\\test-con\\src\\main\\resources\\config\\propTest.properties";
+            File file = new File(propFileAbsolutePath);
             in = new FileInputStream(file);
 
             // @2 - 以资源的形式读取
