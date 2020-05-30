@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>test-con</artifactId>
-    <name>test-con模块</name>
+    <name>test-con-python连接模块</name>
 
 
 </project>
