@@ -25,6 +25,17 @@
             <artifactId>test-con</artifactId>
             <version>2.4</version>
         </dependency>
+        <dependency>
+            <groupId>me.zhengjie</groupId>
+            <artifactId>test-con02</artifactId>
+            <version>2.4</version>
+        </dependency>
+        <dependency>
+            <groupId>me.zhengjie</groupId>
+            <artifactId>test-xyz</artifactId>
+            <version>2.4</version>
+            <!--<scope>compile</scope>-->
+        </dependency>
 
         <!-- 代码生成模块 -->
         <dependency>
@@ -92,12 +103,6 @@
             <groupId>com.github.oshi</groupId>
             <artifactId>oshi-core</artifactId>
             <version>5.0.1</version>
-        </dependency>
-        <dependency>
-            <groupId>me.zhengjie</groupId>
-            <artifactId>test-xyz</artifactId>
-            <version>2.4</version>
-            <scope>compile</scope>
         </dependency>
 
     </dependencies>
