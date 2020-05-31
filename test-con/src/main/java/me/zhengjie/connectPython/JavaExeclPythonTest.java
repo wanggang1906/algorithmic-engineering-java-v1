@@ -59,7 +59,9 @@ public class JavaExeclPythonTest {
         }
     }
 
-    // 执行py
+    /** 执行py
+     * 类，类属性，类方法注释用JavaDoc形式
+     * */
     public static void executepy(String[] args)throws IOException, InterruptedException{
 
 
