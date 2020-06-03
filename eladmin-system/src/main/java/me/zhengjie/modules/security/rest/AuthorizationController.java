@@ -53,6 +53,15 @@ import java.util.concurrent.TimeUnit;
  * @date 2018-11-23
  * 授权、根据token获取用户详细信息
  */
+
+/**
+ * token授权机制
+ * @1 - 后端产生token，和username一起存储进redis
+ * @2 - 前端根据username查询后端的token，符合后返回前端token，并且token没过期
+ * @3 - 每次请求在header中携带token
+ * */
+
+
 @Slf4j
 @RestController
 @RequestMapping("/auth")
