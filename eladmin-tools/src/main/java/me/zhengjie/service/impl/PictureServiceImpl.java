@@ -78,6 +78,7 @@ public class PictureServiceImpl implements PictureService {
         HashMap<String, Object> paramMap = new HashMap<>(1);
         paramMap.put("smfile", file);
         // 上传文件
+        // 图片存储到smms云中
         String result= HttpRequest.post(ElAdminConstant.Url.SM_MS_URL + "/v2/upload")
                 .header("Authorization", token)
                 .form(paramMap)
