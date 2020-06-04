@@ -52,14 +52,25 @@ import java.util.concurrent.TimeUnit;
  * @author Zheng Jie
  * @date 2018-11-23
  * 授权、根据token获取用户详细信息
- */
-
-/**
+ *
+ *
  * token授权机制
- * @1 - 后端产生token，和username一起存储进redis
- * @2 - 前端根据username查询后端的token，符合后返回前端token，并且token没过期
- * @3 - 每次请求在header中携带token
- * */
+ * 首次登陆
+ *  #1 - 前端发送用户名密码到后端登陆处理层login action
+ *  #2 - login action调用认证服务进行用户名密码认证，认证通过后获取用户用户名密码和用户权限
+ *  #3 - 根据用户信息生成token，用户jwt
+ *  #4 - 返回用户信息和token
+ *
+ * 后续请求
+ *  #1 - 基于Token的认证机制会在每一次请求中都带上完成签名的Token信息
+ *  #2 - 这个Token信息可能在COOKIE中，也可能在HTTP的Authorization头中
+ *
+ *  本系统中
+ *  #1 - 在登陆时先通过验证码验证，通过后返回用户名和token
+ *  #2 - 进入首页后获取用户信息，根据用户id拉取菜单返回
+ *
+ *
+ */
 
 
 @Slf4j
@@ -94,8 +105,11 @@ public class AuthorizationController {
             throw new BadRequestException("验证码不存在或已过期");
         }
         if (StringUtils.isBlank(authUser.getCode()) || !authUser.getCode().equalsIgnoreCase(code)) {
+            // equalsIgnoreCase - 将字符串与指定的对象比较，不必考虑大小写
             throw new BadRequestException("验证码错误");
         }
+        // 用户名密码身份验证令牌，只能用post请求
+        // 基于spring security的AbstractAuthenticationProcessingFilter实现的用户名密码身份验证过滤器
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(authUser.getUsername(), password);
 
@@ -103,6 +117,8 @@ public class AuthorizationController {
         SecurityContextHolder.getContext().setAuthentication(authentication);
         // 生成令牌
         String token = tokenProvider.createToken(authentication);
+        // jwt - JSON web token
+        //
         final JwtUserDto jwtUserDto = (JwtUserDto) authentication.getPrincipal();
         // 保存在线信息
         onlineUserService.save(jwtUserDto, token, request);
@@ -128,7 +144,9 @@ public class AuthorizationController {
     @ApiOperation("获取验证码")
     @GetMapping(value = "/code")
     public ResponseEntity<Object> getCode(){
+        // java图像验证码 - 支持图片，gif，算数，汉字等类型
         // 算术类型 https://gitee.com/whvse/EasyCaptcha
+        // 111,36
         ArithmeticCaptcha captcha = new ArithmeticCaptcha(111, 36);
         // 几位数运算，默认是两位
         captcha.setLen(2);

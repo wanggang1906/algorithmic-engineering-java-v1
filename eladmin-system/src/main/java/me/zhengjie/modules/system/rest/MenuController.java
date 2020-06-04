@@ -62,6 +62,7 @@ public class MenuController {
     @GetMapping(value = "/build")
     @ApiOperation("获取前端所需菜单")
     public ResponseEntity<Object> buildMenus(){
+        // 根据用户id获取菜单列表
         List<MenuDto> menuDtoList = menuService.findByUser(SecurityUtils.getCurrentUserId());
         List<MenuDto> menuDtos = menuService.buildTree(menuDtoList);
         return new ResponseEntity<>(menuService.buildMenus(menuDtos),HttpStatus.OK);
